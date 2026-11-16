@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SITHUWA TOOL HUB 📌</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Outfit',sans-serif}
+body{background:#0a0a1a;color:#fff;overflow-x:hidden;min-height:100vh}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(circle at 20% 20%,#ff2d95 0%,transparent 40%),radial-gradient(circle at 80% 80%,#6a00ff 0%,transparent 40%),radial-gradient(circle at 50% 50%,#00e5ff 0%,transparent 50%);opacity:.35;z-index:-1;animation:bg 8s infinite alternate}
+@keyframes bg{to{transform:scale(1.15)}}
+/* LOADER */
+#loader{position:fixed;inset:0;background:#0a0a1a;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:.6s}
+#loader.hide{opacity:0;pointer-events:none;transform:scale(1.1)}
+.loader-logo{width:140px;height:140px;border-radius:50%;object-fit:cover;border:3px solid #ff2d95;box-shadow:0 0 60px #ff2d95;animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{transform:scale(1);box-shadow:0 0 40px #ff2d95}50%{transform:scale(1.08);box-shadow:0 0 90px #ff2d95}}
+.loader-bar{width:220px;height:6px;background:#222;border-radius:99px;margin-top:25px;overflow:hidden}
+.loader-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#ff2d95,#00e5ff);animation:load 2s forwards}
+@keyframes load{to{width:100%}}
+/* HEADER */
+header{padding:20px 16px;text-align:center;position:sticky;top:0;backdrop-filter:blur(20px);background:rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.15);z-index:100}
+header img{width:72px;height:72px;border-radius:50%;object-fit:cover;border:2px solid #fff;box-shadow:0 10px 30px rgba(255,45,149,.6)}
+header h1{font-size:26px;letter-spacing:1px;margin-top:8px}
+header p{font-size:13px;opacity:.8}
+.auth{display:flex;gap:10px;justify-content:center;margin-top:12px}
+.auth button{padding:9px 16px;border-radius:99px;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.12);color:#fff;font-weight:700;cursor:pointer;backdrop-filter:blur(10px)}
+.auth button:hover{background:#fff;color:#000}
+/* GRID */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px;padding:16px;max-width:1200px;margin:auto}
+.card{background:rgba(255,255,255,.10);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border:1px solid rgba(255,255,255,.25);border-radius:24px;padding:18px;box-shadow:0 15px 40px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.4);animation:cardIn .6s both;transition:.3s}
+.card:hover{transform:translateY(-4px) scale(1.01);box-shadow:0 25px 50px rgba(255,45,149,.35)}
+@keyframes cardIn{from{opacity:0;transform:translateY(20px) scale(.95)}to{opacity:1;transform:none}}
+.card h2{font-size:19px;margin-bottom:4px}
+.card p{font-size:13px;opacity:.75;margin-bottom:12px}
+input,select,textarea{width:100%;padding:12px 14px;border-radius:14px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.12);color:#fff;outline:none;margin-bottom:10px;font-size:14px}
+input::placeholder,textarea::placeholder{color:rgba(255,255,255,.6)}
+select option{color:#000}
+.btn{width:100%;padding:12px;border:none;border-radius:14px;background:linear-gradient(90deg,#ff2d95,#6a00ff);color:#fff;font-weight:800;cursor:pointer;font-size:15px}
+.btn2{background:linear-gradient(90deg,#00e5ff,#00ff88);color:#000}
+.result{margin-top:12px;background:rgba(0,0,0,.3);border-radius:16px;padding:12px;font-size:13px;word-break:break-all;max-height:320px;overflow:auto}
+.result img,.result video{width:100%;border-radius:14px;margin-top:8px}
+.result a{color:#00e5ff;font-weight:700}
+.chatbox{height:260px;overflow:auto;display:flex;flex-direction:column;gap:8px;margin-bottom:10px}
+.msg{max-width:85%;padding:10px 14px;border-radius:18px;background:rgba(255,255,255,.15);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.2);font-size:14px;align-self:flex-start}
+.msg.me{align-self:flex-end;background:linear-gradient(135deg,#ff2d95,#6a00ff)}
+footer{text-align:center;padding:20px;opacity:.7;font-size:13px}
+.badge{display:inline-block;background:#ff2d95;padding:3px 10px;border-radius:99px;font-size:11px;margin-bottom:8px}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+<img class="loader-logo" src="https://res.cloudinary.com/p6lu5bpe/image/upload/v1794818482/dvnga2kylxxlnadgfhvg.jpg">
+<h2 style="margin-top:16px">SITHUWA TOOL HUB 📌</h2>
+<p style="opacity:.7">ᴘᴏᴡᴇʀᴅ ʙʏ ꜱɪᴛʜᴜᴡᴀ 🎀</p>
+<div class="loader-bar"><i></i></div>
+<p style="margin-top:10px;font-size:12px">Loading Tools...</p>
+</div>
+
+<header>
+<img src="https://res.cloudinary.com/p6lu5bpe/image/upload/v1794818482/dvnga2kylxxlnadgfhvg.jpg">
+<h1>𝗦𝗜𝗧𝗛𝗨𝗪𝗔 𝗧𝗢𝗢𝗟 𝗛𝗨𝗕 📌</h1>
+<p>ᴘᴏᴡᴇʀᴅ ʙʏ ꜱɪᴛʜᴜᴡᴀ 🎀 | 16+ Super Tools Free</p>
+<div class="auth">
+<button onclick="login('Google')">🔵 Google Login</button>
+<button onclick="login('GitHub')">⚫ GitHub Login</button>
+<span id="user" style="align-self:center;font-size:13px"></span>
+</div>
+</header>
+
+<div class="grid">
+
+<!-- AI ASSISTANT -->
+<div class="card" style="grid-column:span 2">
+<span class="badge">✨ SITHUWA AI ASSISTANT</span>
+<h2>🤖 Sithuwa AI - ඔයාගේ Assistant</h2>
+<p>මම තමයි Sithuwa! Owner Sithuwa! ඔයා කියන ඕනම දෙයක් මට කරන්න පුළුවන්! Chat කරන්න!</p>
+<div class="chatbox" id="aiChat"><div class="msg">Hi! මම Sithuwa AI 🎀 Owner Sithuwa ගේ Assistant! මට ඕනම දෙයක් කියන්න, Code, Homework, Caption, Story ඔක්කොම හදලා දෙන්නම්!</div></div>
+<div style="display:flex;gap:8px"><input id="aiInput" placeholder="මට ඕනම දෙයක් අහන්න..."><button class="btn" style="width:100px" onclick="askAI()">Send</button></div>
+<div style="display:flex;gap:8px;margin-top:8px"><button class="btn btn2" onclick="setAI('gemini')">Gemini Mode</button><button class="btn" onclick="setAI('claude')">Claude Mode</button></div>
+</div>
+
+<!-- TIKTOK -->
+<div class="card"><span class="badge">TIKTOK</span><h2>🎵 TikTok Downloader</h2><p>Video + Audio Only Download</p><input id="ttUrl" placeholder="TikTok Link Paste කරන්න"><button class="btn" onclick="ttdl()">Download TikTok</button><button class="btn btn2" style="margin-top:8px" onclick="ttdlAudio()">🎧 Audio Only</button><div class="result" id="ttRes">Result මෙතන...</div></div>
+
+<!-- YT -->
+<div class="card"><span class="badge">YOUTUBE</span><h2>▶️ YouTube Downloader</h2><p>Video / Audio / MP3</p><input id="ytUrl" placeholder="YouTube Link"><button class="btn" onclick="ytdl()">Download YouTube</button><div class="result" id="ytRes">Result මෙතන...</div></div>
+
+<!-- FB -->
+<div class="card"><span class="badge">FACEBOOK</span><h2>📘 Facebook Downloader</h2><p>Reel / Video Download</p><input id="fbUrl" placeholder="Facebook Reel Link"><button class="btn" onclick="fbdl()">Download FB</button><div class="result" id="fbRes">Result මෙතන...</div></div>
+
+<!-- APK -->
+<div class="card"><span class="badge">APK</span><h2>📱 App Search / APK</h2><p>ඕනම App එකක් හොයන්න</p><input id="apkQ" placeholder="Ex: Termux, WhatsApp..."><button class="btn" onclick="apkSearch()">Search App</button><div class="result" id="apkRes">Result මෙතන...</div></div>
+
+<!-- QR -->
+<div class="card"><span class="badge">QR</span><h2>🔳 QR Generator</h2><input id="qrText" placeholder="Text / Link"><button class="btn" onclick="qrGen()">Generate QR</button><div class="result" id="qrRes"></div></div>
+
+<!-- TINY URL -->
+<div class="card"><span class="badge">LINK</span><h2>🔗 URL Shortener</h2><input id="tinyUrl" placeholder="https://..."><button class="btn" onclick="tiny()">Shorten</button><div class="result" id="tinyRes"></div></div>
+
+<!-- GIT CLONE -->
+<div class="card"><span class="badge">GITHUB</span><h2>💻 GitHub Repo Downloader</h2><input id="gitRepo" placeholder="https://github.com/user/repo"><button class="btn" onclick="gitClone()">Download Repo ZIP</button><div class="result" id="gitRes"></div></div>
+
+<!-- TRANSLATE -->
+<div class="card"><span class="badge">TRANSLATE</span><h2>🌍 Translator</h2><input id="trText" placeholder="Text"><select id="trTo"><option value="si">Sinhala</option><option value="en">English</option><option value="ta">Tamil</option><option value="hi">Hindi</option><option value="ja">Japanese</option><option value="ko">Korean</option></select><button class="btn" onclick="translateText()">Translate</button><div class="result" id="trRes"></div></div>
+
+<!-- NUMBER -->
+<div class="card"><span class="badge">LOOKUP</span><h2>📞 Number Lookup</h2><input id="numQ" placeholder="0762108015"><button class="btn" onclick="numLookup()">Lookup</button><div class="result" id="numRes"></div></div>
+
+<!-- SSWEB -->
+<div class="card"><span class="badge">SCREENSHOT</span><h2>📸 Website Screenshot</h2><input id="ssUrl" placeholder="https://sulaofc.store"><button class="btn" onclick="ssweb()">Take Screenshot</button><div class="result" id="ssRes"></div></div>
+
+<!-- IMAGE SEARCH -->
+<div class="card"><span class="badge">IMAGE</span><h2>🖼️ Image Search</h2><input id="imgQ" placeholder="anime, cat..."><button class="btn" onclick="imgSearch()">Search Images</button><div class="result" id="imgRes"></div></div>
+
+<!-- TTS -->
+<div class="card"><span class="badge">VOICE</span><h2>🔊 Text To Speech</h2><textarea id="ttsText" placeholder="හෙලෝ මම සිතුවා"></textarea><select id="ttsLang"><option value="si">Sinhala</option><option value="en">English</option><option value="ta">Tamil</option></select><button class="btn" onclick="tts()">Generate Voice + Download</button><div class="result" id="ttsRes"></div></div>
+
+<!-- LYRICS -->
+<div class="card"><span class="badge">MUSIC</span><h2>🎶 Lyrics Search</h2><input id="lyrQ" placeholder="Song Name"><button class="btn" onclick="lyrics()">Find Lyrics</button><div class="result" id="lyrRes"></div></div>
+
+<!-- COUPLE PP -->
+<div class="card"><span class="badge">FUN</span><h2>💑 Couple PP - Fun</h2><p>Random Couple Profile Pictures</p><button class="btn" onclick="couple()">Get Couple PP</button><div class="result" id="coupleRes"></div></div>
+
+</div>
+
+<footer>ᴘᴏᴡᴇʀᴅ ʙʏ ꜱɪᴛʜᴜᴡᴀ 🎀 | SITHUWA TOOL HUB 📌 | All Tools Free</footer>
+
+<script>
+const API='https://api-nomo.zone.id/api';
+setTimeout(()=>document.getElementById('loader').classList.add('hide'),2200);
+function login(p){let n=prompt(p+' Login - ඔයාගේ නම?'); if(n) document.getElementById('user').innerText='👋 Hi, '+n+' ✅';}
+let aiMode='gemini';
+function setAI(m){aiMode=m; alert(m+' Mode ON!')}
+async function fetchAPI(url){try{let r=await fetch(url); let j=await r.json(); return j;}catch(e){return {error:e.message}}}
+function show(id,html){document.getElementById(id).innerHTML=html}
+async function askAI(){
+ let q=document.getElementById('aiInput').value; if(!q) return;
+ let box=document.getElementById('aiChat'); box.innerHTML+=`<div class="msg me">${q}</div>`; document.getElementById('aiInput').value='';
+ box.innerHTML+=`<div class="msg" id="tmp">Typing... 🎀</div>`; box.scrollTop=box.scrollHeight;
+ let url = aiMode==='gemini' ? `${API}/gemini?q=${encodeURIComponent(q)}` : `${API}/claude-haiku?q=${encodeURIComponent(q)}`;
+ let d=await fetchAPI(url); document.getElementById('tmp').remove();
+ let ans=d.result||d.data||d.response||d.answer||JSON.stringify(d).slice(0,1000);
+ box.innerHTML+=`<div class="msg">${ans}</div>`; box.scrollTop=box.scrollHeight;
+}
+async function ttdl(){
+ let u=document.getElementById('ttUrl').value; if(!u) return alert('Link දාන්න!');
+ show('ttRes','Loading...'); let d=await fetchAPI(`${API}/ttdl?url=${encodeURIComponent(u)}`);
+ let v=d.result?.video||d.data?.video||d.video||d.download||''; let a=d.result?.audio||d.data?.audio||d.audio||'';
+ let t=d.result?.title||d.title||'TikTok Video';
+ show('ttRes',`<b>${t}</b><br>${v?`<video controls src="${v}"></video><br><a href="${v}" download>⬇️ Video Download</a><br>`:''}${a?`<a href="${a}" download>🎧 Audio Download</a><br>`:''}<pre>${JSON.stringify(d,null,2).slice(0,800)}</pre>`);
+}
+async function ttdlAudio(){
+ let u=document.getElementById('ttUrl').value; if(!u) return alert('Link දාන්න!');
+ show('ttRes','Audio Loading...'); let d=await fetchAPI(`${API}/ttdl?url=${encodeURIComponent(u)}`);
+ let a=d.result?.audio||d.data?.audio||d.audio||d.result?.music||'';
+ show('ttRes',`🎧 Audio Only:<br>${a?`<audio controls src="${a}"></audio><br><a href="${a}" download>⬇️ Audio Download MP3</a>`:JSON.stringify(d).slice(0,500)}`);
+}
+async function ytdl(){
+ let u=document.getElementById('ytUrl').value; if(!u) return alert('Link දාන්න!');
+ show('ytRes','Loading...'); let d=await fetchAPI(`${API}/ytdl?url=${encodeURIComponent(u)}`);
+ let v=d.result?.video||d.data?.video||d.video||''; let au=d.result?.audio||d.data?.audio||d.audio||'';
+ let t=d.result?.title||d.title||'YouTube Video';
+ show('ytRes',`<b>${t}</b><br>${v?`<video controls src="${v}"></video><br><a href="${v}" download>⬇️ Video</a><br>`:''}${au?`<a href="${au}" download>🎧 Audio MP3</a><br>`:''}<pre>${JSON.stringify(d,null,2).slice(0,800)}</pre>`);
+}
+async function fbdl(){
+ let u=document.getElementById('fbUrl').value; if(!u) return alert('Link දාන්න!');
+ show('fbRes','Loading...'); let d=await fetchAPI(`${API}/facebook?url=${encodeURIComponent(u)}`);
+ let v=d.result?.video||d.data?.video||d.video||d.result?.url||'';
+ show('fbRes',`${v?`<video controls src="${v}"></video><br><a href="${v}" download>⬇️ FB Video Download</a>`:''}<pre>${JSON.stringify(d,null,2).slice(0,800)}</pre>`);
+}
+async function apkSearch(){
+ let q=document.getElementById('apkQ').value; if(!q) return alert('App නම දාන්න!');
+ show('apkRes','Searching...'); let d=await fetchAPI(`${API}/apk?query=${encodeURIComponent(q)}`);
+ let list=d.result||d.data||d; let html='<b>Results:</b><br>';
+ if(Array.isArray(list)){ list.slice(0,5).forEach(x=>{ html+=`<div style="margin:8px 0;padding:10px;background:rgba(255,255,255,.1);border-radius:12px"><b>${x.name||x.title||''}</b><br>${x.download||x.link?`<a href="${x.download||x.link}">⬇️ Download APK</a>`:''}<br><small>${JSON.stringify(x).slice(0,200)}</small></div>`}) } else html+=`<pre>${JSON.stringify(d,null,2).slice(0,1200)}</pre>`;
+ show('apkRes',html);
+}
+async function qrGen(){
+ let t=document.getElementById('qrText').value; if(!t) return alert('Text දාන්න!');
+ show('qrRes','Generating...'); let d=await fetchAPI(`${API}/qr?text=${encodeURIComponent(t)}`);
+ let img=d.result||d.data||d.image||d.url||'';
+ show('qrRes',`${img?`<img src="${img}"><br><a href="${img}" download>⬇️ QR Download</a>`:''}<pre>${JSON.stringify(d).slice(0,500)}</pre>`);
+}
+async function tiny(){
+ let u=document.getElementById('tinyUrl').value; if(!u) return alert('URL දාන්න!');
+ show('tinyRes','Shortening...'); let d=await fetchAPI(`${API}/tinyurl?url=${encodeURIComponent(u)}`);
+ let s=d.result||d.short||d.data||JSON.stringify(d);
+ show('tinyRes',`🔗 Short URL: <a href="${s}" target="_blank">${s}</a><br><button class="btn" onclick="navigator.clipboard.writeText('${s}')">Copy</button>`);
+}
+async function gitClone(){
+ let r=document.getElementById('gitRepo').value; if(!r) return alert('Repo Link දාන්න!');
+ show('gitRes','Loading...'); let d=await fetchAPI(`${API}/gitclone?repo=${encodeURIComponent(r)}`);
+ let dl=d.result?.download||d.download||d.url||'';
+ show('gitRes',`${dl?`<a href="${dl}" class="btn" style="display:block;text-align:center;text-decoration:none">⬇️ Download ZIP</a>`:''}<pre>${JSON.stringify(d,null,2).slice(0,800)}</pre>`);
+}
+async function translateText(){
+ let t=document.getElementById('trText').value; let to=document.getElementById('trTo').value;
+ show('trRes','Translating...'); let d=await fetchAPI(`${API}/translate?text=${encodeURIComponent(t)}&to=${to}`);
+ let res=d.result||d.translated||d.data||JSON.stringify(d);
+ show('trRes',`<b>Result:</b> ${res}`);
+}
+async function numLookup(){
+ let q=document.getElementById('numQ').value; show('numRes','Looking up...'); let d=await fetchAPI(`${API}/numberlookup?q=${encodeURIComponent(q)}`);
+ show('numRes',`<pre>${JSON.stringify(d,null,2).slice(0,1000)}</pre>`);
+}
+async function ssweb(){
+ let u=document.getElementById('ssUrl').value; show('ssRes','Taking Screenshot...'); let d=await fetchAPI(`${API}/ssweb?url=${encodeURIComponent(u)}`);
+ let img=d.result||d.image||d.screenshot||d.url||'';
+ show('ssRes',`${img?`<img src="${img}"><br><a href="${img}" download>⬇️ Download Screenshot</a>`:''}<pre>${JSON.stringify(d).slice(0,500)}</pre>`);
+}
+async function imgSearch(){
+ let q=document.getElementById('imgQ').value; show('imgRes','Searching...'); let d=await fetchAPI(`${API}/image?query=${encodeURIComponent(q)}`);
+ let list=d.result||d.data||d.images||[]; let html='';
+ if(Array.isArray(list)){ list.slice(0,6).forEach(u=>{ let src=typeof u==='string'?u:u.url||u.image||''; if(src) html+=`<img src="${src}">` }) } else html=`<pre>${JSON.stringify(d,null,2).slice(0,1000)}</pre>`;
+ show('imgRes',html||'No images');
+}
+async function tts(){
+ let t=document.getElementById('ttsText').value; let l=document.getElementById('ttsLang').value;
+ show('ttsRes','Generating Voice...'); let d=await fetchAPI(`${API}/tts?text=${encodeURIComponent(t)}&lang=${l}`);
+ let au=d.result||d.audio||d.url||'';
+ show('ttsRes',`${au?`<audio controls src="${au}"></audio><br><a href="${au}" download>⬇️ Download Voice</a>`:''}<pre>${JSON.stringify(d).slice(0,500)}</pre>`);
+}
+async function lyrics(){
+ let q=document.getElementById('lyrQ').value; show('lyrRes','Searching Lyrics...'); let d=await fetchAPI(`${API}/lyrics?q=${encodeURIComponent(q)}`);
+ let ly=d.result||d.lyrics||d.data||JSON.stringify(d);
+ show('lyrRes',`<pre style="white-space:pre-wrap">${typeof ly==='string'?ly:JSON.stringify(ly,null,2).slice(0,2000)}</pre>`);
+}
+async function couple(){
+ show('coupleRes','Loading Couple PP...'); let d=await fetchAPI(`${API}/couplepp`);
+ let b=d.boy||d.male||d.result?.boy||''; let g=d.girl||d.female||d.result?.girl||'';
+ show('coupleRes',`💙 Boy:<br>${b?`<img src="${b}"><a href="${b}" download>⬇️ Boy PP</a>`:''}<br>� pink Girl:<br>${g?`<img src="${g}"><a href="${g}" download>⬇️ Girl PP</a>`:''}<pre>${JSON.stringify(d).slice(0,500)}</pre>`);
+}
+</script>
+</body>
+</html>
